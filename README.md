@@ -73,3 +73,17 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
   Nest is [MIT licensed](LICENSE).
+
+## Project Todo List
+- [ ] Decide on JSON authentication or Cookie sessions.  Both?  Chooseable in config?
+- [ ] Pick a database to use - Postgres?
+- [ ] Model Data
+- [ ] User can log in
+- [ ] User can log out
+- [ ] User can create a todo
+- [ ] User can get all of their todos
+- [ ] User can get one of their todos
+- [ ] User can update one of their todos
+- [ ] User can delete one of their todos
+- [ ] Serve on Heroku
+- [ ] Create front-end view?  Server generated or separate project? React? NextJS? NuxtJS?
