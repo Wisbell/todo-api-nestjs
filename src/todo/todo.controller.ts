@@ -1,6 +1,8 @@
-import { Controller, Delete, Get, Post } from '@nestjs/common';
+import { Controller, Delete, Get, Param, Patch, Post, Put } from '@nestjs/common';
 import { TodoEntity } from './todo.entity';
 import { TodoService } from './todo.service';
+
+// TODO: Add correct return types, not found..
 
 @Controller('todo')
 export class TodoController {
@@ -11,8 +13,8 @@ export class TodoController {
     return this.todoService.getAllTodos();
   }
 
-  @Get()
-  getTodo(id: string): TodoEntity {
+  @Get(':id')
+  getTodo(@Param('id') id: string): TodoEntity {
     return this.todoService.getTodo(id);
   }
 
@@ -21,13 +23,13 @@ export class TodoController {
     return this.todoService.createTodo(todo);
   }
 
-  @Get()
-  updateTodo(updatedTodo: TodoEntity): TodoEntity {
+  @Patch(':id')
+  updateTodo(@Param('id') id: string, updatedTodo: TodoEntity): TodoEntity {
     this.todoService.updateTodo(updatedTodo);
     return this.todoService.getTodo(updatedTodo.id);
   }
 
-  @Delete()
+  @Delete(':id')
   deleteTodo(id: string): void {
     return this.todoService.deleteTodo(id);
   }
