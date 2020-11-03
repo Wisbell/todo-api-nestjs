@@ -77,7 +77,7 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## Project Todo List
 - [ ] Decide on JSON authentication or Cookie sessions.  Both?  Chooseable in config?
 - [ ] Pick a database to use - Postgres?
-  - [ ] Use In-memory DB for now https://github.com/nestjs-addons/in-memory-db/
+  - [x] Use In-memory DB for now https://github.com/nestjs-addons/in-memory-db/
 - [ ] Model Data
 - [ ] User can log in
 - [ ] User can log out
