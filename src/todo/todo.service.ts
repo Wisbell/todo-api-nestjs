@@ -5,7 +5,7 @@ import { TodoEntity } from './todo.entity';
 @Injectable()
 export class TodoService {
   constructor(private readonly todoService: InMemoryDBService<TodoEntity>) {
-    todoService.create({ firstName: 'test', lastName: 'test' });
+    todoService.create({ description: 'test' });
   }
 
   getAllTodos(): TodoEntity[] {
