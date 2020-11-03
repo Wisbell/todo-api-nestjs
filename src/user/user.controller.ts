@@ -24,7 +24,7 @@ export class UserController {
   @Patch(':id')
   updateUser(@Param('id') id: string, updatedUser: UserEntity): UserEntity {
     this.userService.updateUser(updatedUser);
-    return this.userService.getUser(updatedUser.id);
+    return this.userService.getUser(updatedUser.id.toString());
   }
 
   @Delete(':id')
