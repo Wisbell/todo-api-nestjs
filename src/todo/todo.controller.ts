@@ -33,5 +33,4 @@ export class TodoController {
   deleteTodo(id: string): void {
     return this.todoService.deleteTodo(id);
   }
-
 }
