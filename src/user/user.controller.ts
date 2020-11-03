@@ -1,5 +1,4 @@
-import { Controller, Param } from '@nestjs/common';
-import { Delete, Get, Patch, Post } from '@nestjs/common/decorators/http/request-mapping.decorator';
+import { Controller, Delete, Get, Param, Patch, Post, Put } from '@nestjs/common';
 import { UserEntity } from './user.entity';
 import { UserService } from './user.service';
 
