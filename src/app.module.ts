@@ -5,8 +5,11 @@ import { InMemoryDBModule } from '@nestjs-addons/in-memory-db';
 import { TodoModule } from './todo/todo.module';
 
 @Module({
-  imports: [InMemoryDBModule.forRoot(), TodoModule],
+  imports: [
+    InMemoryDBModule.forRoot(),
+    TodoModule
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule { }
