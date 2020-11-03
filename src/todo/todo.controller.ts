@@ -1,14 +1,35 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Delete, Get, Post } from '@nestjs/common';
+import { TodoEntity } from './todo.entity';
+import { TodoService } from './todo.service';
 
 @Controller('todo')
 export class TodoController {
-  // TODO: Get all todo
+  constructor(private readonly todoService: TodoService) { }
 
-  // TODO: Get a todo
+  @Get()
+  getAllTodos(): TodoEntity[] {
+    return this.todoService.getAllTodos();
+  }
 
-  // TODO: Create a todo
+  @Get()
+  getTodo(id: string): TodoEntity {
+    return this.todoService.getTodo(id);
+  }
 
-  // TODO: Update a todo
+  @Post()
+  createTodo(todo: TodoEntity): TodoEntity {
+    return this.todoService.createTodo(todo);
+  }
 
-  // TODO: Delete a todo
+  @Get()
+  updateTodo(updatedTodo: TodoEntity): TodoEntity {
+    this.todoService.updateTodo(updatedTodo);
+    return this.todoService.getTodo(updatedTodo.id);
+  }
+
+  @Delete()
+  deleteTodo(id: string): void {
+    return this.todoService.deleteTodo(id);
+  }
+
 }
