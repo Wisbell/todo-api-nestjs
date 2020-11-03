@@ -1,14 +1,30 @@
+import { InMemoryDBService } from '@nestjs-addons/in-memory-db';
 import { Injectable } from '@nestjs/common';
+import { TodoEntity } from './todo.entity';
 
 @Injectable()
 export class TodoService {
-  // TODO: Get all todo
+  constructor(private readonly todoService: InMemoryDBService<TodoEntity>) {
+    todoService.create({ firstName: 'test', lastName: 'test' });
+  }
 
-  // TODO: Get a todo
+  getAllTodos(): TodoEntity[] {
+    return this.todoService.getAll();
+  }
 
-  // TODO: Create a todo
+  getTodo(id: string): TodoEntity {
+    return this.todoService.get(id);
+  }
 
-  // TODO: Update a todo
+  createTodo(todo: TodoEntity) {
+    return this.todoService.create(todo);
+  }
 
-  // TODO: Delete a todo
+  updateTodo(todo: TodoEntity) {
+    return this.todoService.update(todo);
+  }
+
+  deleteTodo(id: string): void {
+    this.todoService.delete(id);
+  }
 }
