@@ -16,6 +16,10 @@ export class UserService {
     return this.userService.get(id);
   }
 
+  getUserByUsername(username: string): UserEntity {
+    return this.userService.query(record => record.username === username)[0];
+  }
+
   createUser(newUser: UserEntity) {
     return this.userService.create(newUser);
   }
