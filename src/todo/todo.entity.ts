@@ -1,6 +1,4 @@
-import { InMemoryDBEntity } from '@nestjs-addons/in-memory-db';
-
-export interface TodoEntity extends InMemoryDBEntity {
+export interface TodoEntity {
   description: string;
   completed: boolean;
 }

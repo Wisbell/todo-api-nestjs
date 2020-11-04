@@ -1,4 +1,3 @@
-import { InMemoryDBService } from '@nestjs-addons/in-memory-db';
 import { Injectable, NotImplementedException } from '@nestjs/common';
 import { UserEntity } from './user.entity';
 
@@ -41,6 +40,7 @@ export class UserService {
   }
 
   getUserByUsername(username: string): UserEntity {
+    console.log('getUserByUsername');
     return this.users.find(user => user.username === username);
   }
 
