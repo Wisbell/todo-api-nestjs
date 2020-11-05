@@ -40,7 +40,6 @@ export class UserService {
   }
 
   getUserByUsername(username: string): UserEntity {
-    console.log('getUserByUsername');
     return this.users.find(user => user.username === username);
   }
 
