@@ -1,5 +1,5 @@
 import { Controller, Delete, Get, Param, Patch, Post, Put } from '@nestjs/common';
-import { TodoEntity } from './todo.entity';
+import { Todo } from './todo.entity';
 import { TodoService } from './todo.service';
 
 // TODO: Add correct return types, not found..
