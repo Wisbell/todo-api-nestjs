@@ -1,9 +1,9 @@
 import { Injectable, NotImplementedException } from '@nestjs/common';
-import { UserEntity } from './user.entity';
+import { User } from './user.entity';
 
 @Injectable()
 export class UserService {
-  private readonly users: UserEntity[];
+  private readonly users: User[];
 
   constructor() {
     this.users = [
@@ -13,43 +13,43 @@ export class UserService {
         password: 'test',
         emailAddress: 'test@test.com',
         admin: false
-      },
+      } as User,
       {
         id: 2,
         username: 'chris',
         password: 'secret',
         emailAddress: 'test@test.com',
         admin: false
-      },
+      } as User,
       {
         id: 3,
         username: 'maria',
         password: 'guess',
         emailAddress: 'test@test.com',
         admin: false
-      }
+      } as User
     ];
   }
 
-  getAllUsers(): UserEntity[] {
+  getAllUsers(): User[] {
     return this.users;
   }
 
-  getUser(id: string): UserEntity {
+  getUser(id: string): User {
     return this.users.find(user => user.id === parseInt(id));
   }
 
-  getUserByUsername(username: string): UserEntity {
+  getUserByUsername(username: string): User {
     return this.users.find(user => user.username === username);
   }
 
-  createUser(newUser: UserEntity): UserEntity {
+  createUser(newUser: User): User {
     // this.users.push(newUser);
     // return newUser;
     throw new NotImplementedException();
   }
 
-  updateUser(updatedUser: UserEntity) {
+  updateUser(updatedUser: User) {
     // return this.userService.update(updatedUser);
     throw new NotImplementedException();
   }
