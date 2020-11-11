@@ -1,4 +1,4 @@
-import { Controller, Delete, Get, Param, Patch, Post, Put } from '@nestjs/common';
+import { Controller, Delete, Get, NotImplementedException, Param, Patch, Post, Put } from '@nestjs/common';
 import { User } from './user.entity';
 import { UserService } from './user.service';
 
@@ -8,12 +8,14 @@ export class UserController {
 
   @Get()
   getAllUsers(): User[] {
-    return this.userService.getAllUsers();
+    // return this.userService.getAllUsers();
+    throw new NotImplementedException();
   }
 
   @Get(':id')
   getUser(@Param('id') id: string): User {
-    return this.userService.getUser(id);
+    throw new NotImplementedException();
+    // return this.userService.getUser(id);
   }
 
   @Post()
@@ -24,7 +26,8 @@ export class UserController {
   @Patch(':id')
   updateUser(@Param('id') id: string, updatedUser: User): User {
     this.userService.updateUser(updatedUser);
-    return this.userService.getUser(updatedUser.id.toString());
+    throw new NotImplementedException();
+    // return this.userService.getUser(updatedUser.id.toString());
   }
 
   @Delete(':id')
