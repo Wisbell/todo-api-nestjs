@@ -1,29 +1,38 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotImplementedException } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { CreateTodoDto } from './dto/create-todo.dto';
 import { Todo } from './todo.entity';
 
 @Injectable()
 export class TodoService {
-  constructor() {
+  constructor(
+    @InjectRepository(Todo)
+    private todoRepository: Repository<Todo>
+  ) { }
 
+  async getAllTodos(): Promise<Todo[]> {
+    return await this.todoRepository.find();
   }
 
-  // getAllTodos(): TodoEntity[] {
-  //   return this.todoService.getAll();
-  // }
+  async getTodo(id: string): Promise<Todo> {
+    return await this.todoRepository.findOne(id);
+  }
 
-  // getTodo(id: string): TodoEntity {
-  //   return this.todoService.get(id);
-  // }
+  createTodo(createTodoDto: CreateTodoDto) {
+    const todo = new Todo();
+    todo.text = createTodoDto.text;
+    todo.completed = false;
+    // TODO: Add logged in user for relationship data
 
-  // createTodo(todo: TodoEntity) {
-  //   return this.todoService.create(todo);
-  // }
+    return this.todoRepository.save(todo);
+  }
 
-  // updateTodo(todo: TodoEntity) {
-  //   return this.todoService.update(todo);
-  // }
+  async updateTodo(todo: Todo): Promise<Todo> {
+    throw new NotImplementedException();
+  }
 
-  // deleteTodo(id: string): void {
-  //   this.todoService.delete(id);
-  // }
+  async deleteTodo(id: string): Promise<void> {
+    await this.todoRepository.delete(id);
+  }
 }
