@@ -20,6 +20,12 @@ export class UserService {
     return this.userRepository.findOne(id);
   }
 
+  async getUserByUsername(username: string): Promise<User> {
+    return this.userRepository.findOne({
+      where: { username },
+    });
+  }
+
   // TODO: Do not store plain text passwords -> bcrypt
   async createUser(createUserDto: CreateUserDto): Promise<User> {
     const user = new User();
