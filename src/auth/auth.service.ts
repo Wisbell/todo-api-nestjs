@@ -9,12 +9,13 @@ export class AuthService {
     private jwtService: JwtService
   ) { }
 
+  // TODO: Fix this
   async validateUser(username: string, pass: string): Promise<any> {
-    const user = await this.userService.getUserByUsername(username);
-    if (user && user.password === pass) {
-      const { password, ...result } = user;
-      return result;
-    }
+    // const user = await this.userService.getUserByUsername(username);
+    // if (user && user.password === pass) {
+    //   const { password, ...result } = user;
+    //   return result;
+    // }
     return null;
   }
 

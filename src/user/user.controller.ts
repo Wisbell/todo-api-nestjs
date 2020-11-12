@@ -6,32 +6,31 @@ import { UserService } from './user.service';
 export class UserController {
   constructor(private readonly userService: UserService) { }
 
+  // TODO: Admin only, add guard
   @Get()
-  getAllUsers(): User[] {
-    // return this.userService.getAllUsers();
-    throw new NotImplementedException();
+  async getAllUsers(): Promise<User[]> {
+    return await this.userService.getAllUsers();
   }
 
   @Get(':id')
-  getUser(@Param('id') id: string): User {
-    throw new NotImplementedException();
-    // return this.userService.getUser(id);
+  async getUser(@Param('id') id: string): Promise<User> {
+    return await this.userService.getUser(id);
   }
 
   @Post()
-  createUser(newUser: User): User {
-    return this.userService.createUser(newUser);
+  async createUser(newUser: User): Promise<User> {
+    // return this.userService.createUser(newUser);
+    throw new NotImplementedException();
   }
 
   @Patch(':id')
-  updateUser(@Param('id') id: string, updatedUser: User): User {
-    this.userService.updateUser(updatedUser);
+  async updateUser(@Param('id') id: string, updatedUser: User): Promise<User> {
     throw new NotImplementedException();
     // return this.userService.getUser(updatedUser.id.toString());
   }
 
   @Delete(':id')
-  deleteUser(id: string): void {
-    return this.userService.deleteUser(id);
+  async deleteUser(id: string): Promise<void> {
+    return await this.userService.deleteUser(id);
   }
 }

@@ -5,63 +5,42 @@ import { Repository } from 'typeorm';
 
 @Injectable()
 export class UserService {
-  // private readonly users: User[];
 
   constructor(
     @InjectRepository(User)
-    private userRepository: Repository<User>,
-  ) {
-    // this.users = [
-    //   {
-    //     id: 1,
-    //     username: 'test',
-    //     password: 'test',
-    //     emailAddress: 'test@test.com',
-    //     admin: false
-    //   } as User,
-    //   {
-    //     id: 2,
-    //     username: 'chris',
-    //     password: 'secret',
-    //     emailAddress: 'test@test.com',
-    //     admin: false
-    //   } as User,
-    //   {
-    //     id: 3,
-    //     username: 'maria',
-    //     password: 'guess',
-    //     emailAddress: 'test@test.com',
-    //     admin: false
-    //   } as User
-    // ];
+    private userRepository: Repository<User>
+  ) { }
+
+  async getAllUsers(): Promise<User[]> {
+    return await this.userRepository.find();
   }
 
-  // getAllUsers(): User[] {
-  //   return this.users;
-  // }
-
-  // getUser(id: string): User {
-  //   return this.users.find(user => user.id === parseInt(id));
-  // }
-
-  getUserByUsername(username: string): User {
-    // return this.users.find(user => user.username === username);
-    return new User();
+  async getUser(id: string): Promise<User> {
+    return this.userRepository.findOne(id);
   }
 
-  createUser(newUser: User): User {
+  // TODO: Create user DTO
+  //  https://github.com/nestjs/nest/blob/master/sample/05-sql-typeorm/src/users/users.service.ts
+  async createUser(newUser: User): Promise<User> {
+  // createUser(createUserDto: CreateUserDto): User {
     // this.users.push(newUser);
     // return newUser;
     throw new NotImplementedException();
+
+    // const user = new User();
+    // user.firstName = createUserDto.firstName;
+    // user.lastName = createUserDto.lastName;
+
+    // return this.usersRepository.save(user);
   }
 
-  updateUser(updatedUser: User) {
+  async updateUser(updatedUser: User): Promise<User> {
     // return this.userService.update(updatedUser);
     throw new NotImplementedException();
   }
 
-  deleteUser(id: string): void {
-    // this.userService.delete(id);
+  async deleteUser(id: string): Promise<void> {
+    await this.userRepository.delete(id);
     throw new NotImplementedException();
   }
 }
