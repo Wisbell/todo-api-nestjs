@@ -92,3 +92,6 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 - [ ] Encrypt user password on user creation
 - [ ] Add error handling for controllers/services
 - [ ] Add tests for controllers/services
+- [ ] Review auth guards
+- [ ] Create role guard
+- [ ] Create repository class

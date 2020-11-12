@@ -26,7 +26,11 @@ export class TodoService {
     todo.completed = false;
     todo.user = user;
 
-    return await this.todoRepository.save(todo);
+    await this.todoRepository.save(todo);
+
+    delete todo.user;
+
+    return todo;
   }
 
   async updateTodo(todo: Todo): Promise<Todo> {

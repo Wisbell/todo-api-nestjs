@@ -1,5 +1,6 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, Put, UseGuards } from '@nestjs/common';
 import { GetUser } from 'src/auth/get-user.decorator';
+import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 import { User } from 'src/user/user.entity';
 import { CreateTodoDto } from './dto/create-todo.dto';
 import { Todo } from './todo.entity';
@@ -8,13 +9,14 @@ import { TodoService } from './todo.service';
 // TODO: Add correct return types, not found..
 
 @Controller('todo')
+@UseGuards(JwtAuthGuard)
 export class TodoController {
   constructor(private readonly todoService: TodoService) { }
 
-  // @Get()
-  // getAllTodos(): TodoEntity[] {
-  //   return this.todoService.getAllTodos();
-  // }
+  @Get()
+  async getAllTodos(): Promise<Todo[]> {
+    return await this.todoService.getAllTodos();
+  }
 
   // @Get(':id')
   // getTodo(@Param('id') id: string): TodoEntity {
@@ -26,6 +28,7 @@ export class TodoController {
     @Body() createTaskDto: CreateTodoDto,
     @GetUser() user: User
   ): Promise<Todo> {
+    console.log('get user dec', user);
     return await this.todoService.createTodo(createTaskDto, user);
   }
 
