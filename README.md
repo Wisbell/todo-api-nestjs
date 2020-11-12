@@ -90,4 +90,5 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 - [ ] Serve on Heroku
 - [ ] Create front-end view?  Server generated or separate project? React? NextJS? NuxtJS?
 - [ ] Encrypt user password on user creation
-
+- [ ] Add error handling for controllers/services
+- [ ] Add tests for controllers/services

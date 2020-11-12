@@ -1,5 +1,6 @@
 import { Injectable, NotImplementedException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { User } from 'src/user/user.entity';
 import { Repository } from 'typeorm';
 import { CreateTodoDto } from './dto/create-todo.dto';
 import { Todo } from './todo.entity';
@@ -19,13 +20,13 @@ export class TodoService {
     return await this.todoRepository.findOne(id);
   }
 
-  createTodo(createTodoDto: CreateTodoDto) {
+  async createTodo(createTodoDto: CreateTodoDto, user: User): Promise<Todo> {
     const todo = new Todo();
     todo.text = createTodoDto.text;
     todo.completed = false;
-    // TODO: Add logged in user for relationship data
+    todo.user = user;
 
-    return this.todoRepository.save(todo);
+    return await this.todoRepository.save(todo);
   }
 
   async updateTodo(todo: Todo): Promise<Todo> {
