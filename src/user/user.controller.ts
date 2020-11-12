@@ -1,4 +1,5 @@
-import { Controller, Delete, Get, NotImplementedException, Param, Patch, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, NotImplementedException, Param, Patch, Post, Put } from '@nestjs/common';
+import { CreateUserDto } from './dto/create-user.dto';
 import { User } from './user.entity';
 import { UserService } from './user.service';
 
@@ -18,9 +19,8 @@ export class UserController {
   }
 
   @Post()
-  async createUser(newUser: User): Promise<User> {
-    // return this.userService.createUser(newUser);
-    throw new NotImplementedException();
+  async createUser(@Body() createUserDto: CreateUserDto): Promise<User> {
+    return this.userService.createUser(createUserDto);
   }
 
   @Patch(':id')
