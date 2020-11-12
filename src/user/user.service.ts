@@ -27,6 +27,7 @@ export class UserService {
   }
 
   // TODO: Do not store plain text passwords -> bcrypt
+  // TODO: Do not allow duplicate username's -> send detailed error to user
   async createUser(createUserDto: CreateUserDto): Promise<User> {
     const user = new User();
     user.username = createUserDto.username;

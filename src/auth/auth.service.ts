@@ -9,8 +9,10 @@ export class AuthService {
     private jwtService: JwtService
   ) { }
 
+  // TODO: Make sure role is sent to profile route
   async validateUser(username: string, pass: string): Promise<any> {
     const user = await this.userService.getUserByUsername(username);
+    console.log('user', user);
     if (user && user.password === pass) {
       const { password, ...result } = user;
       return result;

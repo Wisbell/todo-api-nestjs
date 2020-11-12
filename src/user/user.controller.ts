@@ -13,22 +13,26 @@ export class UserController {
     return await this.userService.getAllUsers();
   }
 
+  // TODO: Admin only or user only
   @Get(':id')
   async getUser(@Param('id') id: string): Promise<User> {
     return await this.userService.getUser(id);
   }
 
+  // NOTE: No guards?
   @Post()
   async createUser(@Body() createUserDto: CreateUserDto): Promise<User> {
     return this.userService.createUser(createUserDto);
   }
 
+  // TODO: Admin only
   @Patch(':id')
   async updateUser(@Param('id') id: string, updatedUser: User): Promise<User> {
     throw new NotImplementedException();
     // return this.userService.getUser(updatedUser.id.toString());
   }
 
+  // TODO: Admin only or logged in user only
   @Delete(':id')
   async deleteUser(id: string): Promise<void> {
     return await this.userService.deleteUser(id);

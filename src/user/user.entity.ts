@@ -1,7 +1,8 @@
-import { PrimaryGeneratedColumn, Column, Entity, OneToMany } from "typeorm";
+import { PrimaryGeneratedColumn, Column, Entity, Unique, OneToMany } from "typeorm";
 import { Todo } from "../todo/todo.entity";
 
 @Entity()
+@Unique(["username"])
 export class User {
   @PrimaryGeneratedColumn()
   id: number;
